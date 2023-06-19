@@ -7,15 +7,11 @@ from rest_framework.pagination import PageNumberPagination
 from users.serializers import ChangePasswordSerializer
 
 
-# ----------------------------------------------------------------
-# Paginator
 class Paginator(PageNumberPagination):
     """Custom pagination class"""
     page_size: int = 4
 
 
-# ----------------------------------------------------------------
-# custom userviewset
 @extend_schema_view(
     list=extend_schema(
         description="List of all users",

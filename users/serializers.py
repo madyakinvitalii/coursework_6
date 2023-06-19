@@ -4,13 +4,9 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
 
-# ------------------------------------------------------------
-# define user model
 User = get_user_model()
 
 
-# -------------------------------------------------------------------------
-# serializers
 class UserRegistrationSerializer(UserCreateSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -45,4 +41,3 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['new_password', 'current_password']
-

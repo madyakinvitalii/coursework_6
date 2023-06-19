@@ -8,18 +8,13 @@ from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 from skymarket import settings
 from users.views import CustomUserViewSet
 
-# ----------------------------------------------------------------
-# router for users based on Djoser
+
 router = SimpleRouter()
 
 
-# ----------------------------------------------------------------
-# register route
 router.register('users', CustomUserViewSet, basename='users')
 
 
-# ----------------------------------------------------------------
-# urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
@@ -32,6 +27,5 @@ urlpatterns = [
 ]
 
 
-# ----------------------------------------------------------------
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

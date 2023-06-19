@@ -84,23 +84,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'skymarket.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-
-# ----------------------------------------------------------------
-# Database settings
-# DATABASES = {
-#     'default': {
-#         'ENGINE': os.getenv('DB_ENGINE'),
-#         'NAME': os.getenv('DB_NAME'),
-#         'USER': os.getenv('DB_USER'),
-#         'PASSWORD': os.getenv('DB_PASSWORD'),
-#         'HOST': os.getenv('DB_HOST'),
-#         'PORT': os.getenv('DB_PORT')
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -149,13 +132,9 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# # ----------------------------------------------------------------
-# auth user model (custom auth model)
 AUTH_USER_MODEL = 'users.User'
 
 
-# ----------------------------------------------------------------
-# DRF settings (JWT token)
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication'
@@ -167,8 +146,8 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60)
 }
-# ----------------------------------------------------------------
-# djoser settings
+
+
 DJOSER = {
     'HIDE_USERS': False,
     'SERIALIZERS': {
@@ -187,13 +166,9 @@ DJOSER = {
 }
 
 
-# ----------------------------------------------------------------
-# cors setup
 CORS_ORIGIN_ALLOW_ALL = True
 
 
-# ----------------------------------------------------------------
-# documentation settings
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Coursework6_Django_Skymarket API',
     'DESCRIPTION': 'This is an API for managing an application similar to Avito',
@@ -201,8 +176,6 @@ SPECTACULAR_SETTINGS = {
 }
 
 
-# ----------------------------------------------------------------
-# roots for media
 STATIC_URL = 'static/'
 
 MEDIA_URL = "/django_media/"
