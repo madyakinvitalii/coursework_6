@@ -13,17 +13,16 @@ def test_retrieve_comment(client, ad, comment, test_auth_data):
 
     expected_response: dict = {
         "pk": comment.pk,
-        "text": 'Test',
+        "text": 'test_comment',
         "ad_id": ad.pk,
-        "author_id": 5,
-        "author_first_name": user.first_name,
+        "author_id": 18,
+        "author_first_name": 'test_first_name',
         "author_last_name": user.last_name,
         "author_image": None,
         "created_at": None
     }
+
     response.data['created_at'] = None
-    print(response.data)
-    print(expected_response)
     assert response.status_code == 200, 'Status code error'
     assert response.data is not None, 'HttpResponseError'
     assert response.data == expected_response, 'Wrong data expected'

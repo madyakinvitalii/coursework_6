@@ -13,7 +13,7 @@ class UserFactory(factory.django.DjangoModelFactory):
     first_name = 'test_first_name'
     last_name = 'test_last_name'
     is_active = True
-    phone = '+79111111111'
+    phone = '+79123456789'
 
 
 class AdFactory(factory.django.DjangoModelFactory):

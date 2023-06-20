@@ -1,7 +1,8 @@
 import pytest
 
 
-@pytest.fixture
+# ----------------------------------------------------------------
+@pytest.fixture()
 @pytest.mark.django_db
 def test_auth_data(client, django_user_model) -> tuple:
     """
@@ -10,12 +11,12 @@ def test_auth_data(client, django_user_model) -> tuple:
     :param django_user_model:
     :return: tuple with user id and access token
     """
-    email = 'test@gmail.com'
+    email = 'test@example.ru'
     password = 'password123456'
     role = 'user'
     first_name = 'test_first_name'
     last_name = 'test_last_name'
-    phone = '+79111111111'
+    phone = '+79123456789'
 
     user = django_user_model.objects.create_user(
         email=email,

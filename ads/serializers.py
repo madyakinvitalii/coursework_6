@@ -36,6 +36,15 @@ class AdSerializer(serializers.ModelSerializer):
             self.initial_data['author_id'] = self.context['request'].user.id
         return super().is_valid(raise_exception=raise_exception)
 
+    def create(self, validated_data):
+        # Обработка записи полей с точкой
+        author_data = validated_data.pop('author', {})
+        validated_data['author'] = author_data.get('id')
+
+        # Создание и возвращение объекта объявления
+        ad = Ad.objects.create(**validated_data)
+        return ad
+
     class Meta:
         model: Ad = Ad
         fields: list = ['pk', 'image', 'title', 'price', 'phone', 'description', 'author_first_name',

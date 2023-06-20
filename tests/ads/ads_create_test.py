@@ -11,9 +11,9 @@ def test_create_ad(client, test_auth_data: tuple) -> None:
     auth_token: str = test_auth_data[0]
     user = test_auth_data[1]
 
-    ad: dict = {
-        "title": 'Test',
-        "description": 'Test',
+    advertisement: dict = {
+        "title": 'Test_ad',
+        "description": 'Test_description',
         "price": 50,
         "phone": user.phone,
         "author_id": user.pk,
@@ -23,15 +23,15 @@ def test_create_ad(client, test_auth_data: tuple) -> None:
 
     response = client.post(
         '/api/ads/',
-        data=ad,
+        data=advertisement,
         content_type='application/json',
         HTTP_AUTHORIZATION='Bearer ' + auth_token
     )
 
     expected_response: dict = {
         "pk": 1,
-        "title": 'Test',
-        "description": 'Test',
+        "title": 'Test_ad',
+        "description": 'Test_description',
         "price": 50,
         "phone": user.phone,
         "author_id": response.data.get('pk'),
@@ -54,9 +54,9 @@ def test_create_ad_401(client, test_auth_data: tuple) -> None:
     """
     user = test_auth_data[1]
 
-    ad: dict = {
-        "title": 'Test',
-        "description": 'Test',
+    advertisement: dict = {
+        "title": 'Test_ad',
+        "description": 'Test_description',
         "price": 50,
         "phone": user.phone,
         "author_id": user.pk,
@@ -66,7 +66,7 @@ def test_create_ad_401(client, test_auth_data: tuple) -> None:
 
     response = client.post(
         '/api/ads/',
-        data=ad,
+        data=advertisement,
         content_type='application/json',
     )
 
